@@ -1,0 +1,4 @@
+inky[rpi,fonts]
+numpy
+Pillow
+argparse

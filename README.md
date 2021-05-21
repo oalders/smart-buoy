@@ -6,6 +6,8 @@
 * [Installing inky phat libs](#installing-inky-phat-libs)
   * [Avoid the prompt](#avoid-the-prompt)
   * [Try examples](#try-examples)
+* [Build Docker Image](#build-docker-image)
+* [Test Script](#test-script)
 
 <!-- vim-markdown-toc -->
 
@@ -32,4 +34,17 @@ curl https://get.pimoroni.com/inky | bash -s -- -y
 
 ```sh
 cd /home/pi/Pimoroni/inky/examples
+```
+
+## Build Docker Image
+
+```sh
+docker build . -t smartbuoy
+```
+
+## Test Script
+
+```sh
+docker run -it --volume $PWD:/home/smartbuoy smartbuoy:latest /bin/bash -c "cd /home/smartbuoy && /bin/bash"
+docker run -it --volume $PWD:/home/smartbuoy smartbuoy:latest /bin/bash -c "cd /home/smartbuoy && python3 inky.py"
 ```

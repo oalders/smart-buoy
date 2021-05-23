@@ -11,6 +11,7 @@
 * [Install CircuitPython](#install-circuitpython)
 * [Enable I2C](#enable-i2c)
 * [Attach mpl3115a2 Sensor](#attach-mpl3115a2-sensor)
+* [secrets.py](#secretspy)
 
 <!-- vim-markdown-toc -->
 
@@ -54,10 +55,10 @@ docker run -it --volume $PWD:/home/smartbuoy smartbuoy:latest /bin/bash -c "cd /
 # Install CircuitPython
 
 ```
-scp bin/install-circuitpython.sh pi:~/
-scp bin/blinka-test.py pi:~/
+ssh pi "mkdir -p ~/adafruit"
+scp bin/install-circuitpython.sh pi:~/adafruit/
 ssh pi
-bash install-circuitpython.sh
+cd adafruit && bash install-circuitpython.sh
 ```
 
 # Enable I2C
@@ -67,3 +68,7 @@ bash install-circuitpython.sh
 # Attach mpl3115a2 Sensor
 
 https://learn.adafruit.com/using-mpl3115a2-with-circuitpython/circuitpython
+
+# secrets.py
+
+https://learn.adafruit.com/pyportal-titano-weather-station/code-walkthrough-secrets-py

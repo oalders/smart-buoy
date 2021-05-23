@@ -52,14 +52,15 @@ docker build . -t smartbuoy
 docker run -it --volume $PWD:/home/smartbuoy smartbuoy:latest /bin/bash -c "cd /home/smartbuoy && /bin/bash"
 docker run -it --volume $PWD:/home/smartbuoy smartbuoy:latest /bin/bash -c "cd /home/smartbuoy && python3 inky.py"
 ```
-# Install CircuitPython
+# Install Libraries
 
 ```
-ssh pi "mkdir -p ~/adafruit"
-scp bin/install-circuitpython.sh pi:~/adafruit/
 ssh pi
-cd adafruit && bash install-circuitpython.sh
+git clone https://github.com/oalders/smart-buoy.git
+cd smart-buoy && bash bin/install-circuitpython.sh
 ```
+
+After running these commands, you'll need to manually edit `bin/secrets.py`, replacing the Adafruit IO *username* and *key* with your own.
 
 # Enable I2C
 

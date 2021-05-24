@@ -24,12 +24,28 @@ sensor = adafruit_mpl3115a2.MPL3115A2(i2c)
 # Set this to a value in pascals:
 sensor.sealevel_pressure = 102250
 
+# Get MQTT details and more from a secrets.py file
+try:
+    from secrets import secrets
+except ImportError:
+    print("MQTT secrets are kept in secrets.py, please add them there!")
+    raise
+
+# Import library and create instance of REST client.
+from Adafruit_IO import Client
+aio = Client(secrets["aio_username"], secrets["aio_key"])
+
+# Send the value 100 to a feed called 'Foo'.
+aio.send('welcome-feed', 100)
+
 # Main loop to read the sensor values and print them.
 while True:
     pressure = sensor.pressure
     print("Pressure: {0:0.3f} pascals".format(pressure))
+    aio.send(secrets["ambient_air_pressure_feed"], pressure)
     altitude = sensor.altitude
     print("Altitude: {0:0.3f} meters".format(altitude))
     temperature = sensor.temperature
     print("Temperature: {0:0.3f} degrees Celsius".format(temperature))
-    time.sleep(5.0)
+    aio.send(secrets["ambient_temperature_feed"], temperature)
+    time.sleep(180.0)

@@ -15,6 +15,9 @@ sudo pip3 install adafruit-circuitpython-mpl3115a2
 
 test -f bin/secrets.py || cp bin/sample-secrets.py bin/secrets.py
 
+# https://github.com/adafruit/Adafruit_CircuitPython_MAX31865
+sudo pip3 install adafruit-circuitpython-max31865
+
 #git clone https://github.com/adafruit/Adafruit_IO_Python.git
 #cd Adafruit_IO_Python || exit
 #python3 setup.py install

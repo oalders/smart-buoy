@@ -1,1 +1,3 @@
+bin/Adafruit_IO_Python
+bin/.mypy_cache
 bin/secrets.py

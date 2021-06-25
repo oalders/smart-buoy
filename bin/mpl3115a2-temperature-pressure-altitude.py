@@ -42,6 +42,7 @@ aio.send('welcome-feed', 100)
 while True:
     pressure = sensor.pressure
     print("Pressure: {0:0.3f} pascals".format(pressure))
+    print("Feed name: ", secrets["ambient_air_pressure_feed"])
     aio.send(secrets["ambient_air_pressure_feed"], pressure)
     altitude = sensor.altitude
     print("Altitude: {0:0.3f} meters".format(altitude))
